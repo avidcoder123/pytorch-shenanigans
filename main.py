@@ -4,6 +4,8 @@ import torch
 import torch.optim as optim
 import torch.nn as nn
 
+import torchvision.models as models
+
 np.random.seed(42)
 
 #create slightly randomized coordinate points
@@ -62,3 +64,5 @@ for _ in range(epochs):
 model.eval()
 yhat = model(x_val_tensor)
 print(loss_fn(y_val_tensor, yhat))
+
+torch.save(model.state_dict(), 'model_weights.pth')
